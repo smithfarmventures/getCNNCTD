@@ -1,0 +1,484 @@
+================================================================================
+CNNCTD APP REDESIGN PROMPT FOR CLAUDE CODE
+================================================================================
+
+BRAND: CNNCTD (Get CNNCTD - Stay Connected)
+LOGO: Bridge-style logo with "CNN" on left bridge section and "CTD" on right bridge section
+TAGLINE: "STAY CONNECTED"
+DESCRIPTION: The mobile-first social venture platform bridging to a more CNNCTD ecosystem
+
+================================================================================
+YOUR TASK
+================================================================================
+
+You are tasked with completely redesigning a mobile app to match the visual design and styling of its accompanying website. The app currently looks different from the website, and we need them to have identical visual appearance and user experience.
+
+## CONTEXT
+- Website: Professional, modern design with sophisticated dark teal/green color scheme
+- App: Currently has inconsistent styling that doesn't match the website
+- Goal: Make the app visually identical to the website while maintaining all functionality
+- Brand: CNNCTD - A mobile-first social venture platform connecting startups and investors
+
+## BRAND IDENTITY (from getCNNCTD_v1.pdf)
+
+**Logo Specifications:**
+- Style: Bridge design connecting two sides
+- Left side: "CNN" 
+- Right side: "CTD"
+- Bridge connects the two parts
+- Logo represents connection/bridging in the venture ecosystem
+- Color: Should work on dark teal/green backgrounds
+- Usage: Appears in navigation, splash screens, and branding elements
+
+**Brand Colors (Primary Palette):**
+- Dark Teal/Green: Primary background and brand color
+- White/Off-white: Primary text and logo color on dark backgrounds
+- Accent colors: Extract from website analysis
+- The visual identity emphasizes connection, bridging, and networking
+
+**Brand Voice:**
+- Modern, professional, sophisticated
+- Focus on connectivity and relationships
+- Target audience: VCs, entrepreneurs, startup ecosystem
+
+================================================================================
+STEP 1: EXTRACT COMPLETE DESIGN SYSTEM FROM WEBSITE
+================================================================================
+
+### Colors (Extract ALL colors used)
+- Primary colors (background, brand colors)
+- Secondary colors (accents, highlights)
+- Text colors (headings, body, muted, links)
+- UI colors (borders, dividers, shadows)
+- Status colors (success, warning, error, info)
+- Interactive states (hover, active, focus, disabled)
+- Gradients (if any)
+
+For each color, provide:
+- Exact hex code
+- RGB/RGBA values
+- Usage context
+- CSS variable name
+
+### Typography (Extract ALL font specifications)
+- Font families (primary, secondary, monospace)
+- Font sizes (h1, h2, h3, h4, h5, h6, body, small, etc.)
+- Font weights (light, regular, medium, semibold, bold)
+- Line heights for each size
+- Letter spacing
+- Text transforms (uppercase, capitalize, etc.)
+- Text alignment patterns
+
+For each typography element, provide:
+- CSS font-family
+- font-size in rem/px
+- font-weight
+- line-height
+- letter-spacing
+- color
+- Usage context
+
+### Spacing System (Extract spacing scale)
+- Base unit (typically 4px or 8px)
+- Spacing scale (xs, sm, md, lg, xl, 2xl, etc.)
+- Margin values used
+- Padding values used
+- Gap values in flex/grid
+- Section spacing
+- Component spacing
+
+### Layout System
+- Container max-widths
+- Grid columns
+- Grid gaps
+- Breakpoints (mobile, tablet, desktop, large desktop)
+- Responsive patterns
+- Flex/Grid usage patterns
+
+### Visual Effects
+- Border radius values (buttons, cards, inputs, etc.)
+- Box shadows (subtle, medium, large)
+- Transitions (duration, easing, properties)
+- Animations (keyframes, timing)
+- Opacity values
+- Backdrop filters/blurs
+
+### Logo & Branding Elements
+- CNNCTD logo sizing across different screen sizes
+- Logo placement (header, splash screen, footer)
+- Logo color variants (dark background, light background)
+- Bridge element styling and proportions
+- Tagline "STAY CONNECTED" typography and placement
+- Brand mark usage in buttons, cards, and components
+
+### Component Specifications
+For EACH component type, extract:
+
+**Buttons:**
+- Default state styling
+- Hover state
+- Active/pressed state
+- Focus state
+- Disabled state
+- Size variants (small, medium, large)
+- Style variants (primary, secondary, outline, ghost, link)
+- Icon button styling
+- Button groups
+
+**Forms:**
+- Input fields (text, email, password, etc.)
+- Text areas
+- Select dropdowns
+- Checkboxes
+- Radio buttons
+- Labels
+- Placeholder styling
+- Error states
+- Success states
+- Helper text
+- Field groups
+
+**Cards:**
+- Background color
+- Border/shadow
+- Padding
+- Border radius
+- Hover effects
+- Card headers
+- Card bodies
+- Card footers
+- Card actions
+
+**Navigation:**
+- Header/navbar styling
+- Logo placement and sizing
+- Navigation links (default, hover, active)
+- Mobile menu (hamburger, drawer, etc.)
+- Tab navigation
+- Breadcrumbs
+- Pagination
+
+**Modals/Dialogs:**
+- Backdrop styling
+- Modal container
+- Modal header
+- Modal body
+- Modal footer
+- Close button
+- Animations (enter/exit)
+
+**Lists:**
+- List item styling
+- Dividers
+- List icons
+- Hover states
+- Selected states
+
+**Icons:**
+- Size scale
+- Color
+- Stroke width
+- Usage patterns
+
+**Images:**
+- Border radius
+- Aspect ratios
+- Object-fit values
+- Loading states
+- Placeholder styling
+
+**Badges/Tags:**
+- Background colors
+- Text colors
+- Padding
+- Border radius
+- Size variants
+- Color variants
+
+**Alerts/Notifications:**
+- Success styling
+- Warning styling
+- Error styling
+- Info styling
+- Icons
+- Dismiss buttons
+
+**Loading States:**
+- Spinners
+- Skeleton screens
+- Progress bars
+- Loading overlays
+
+**Tables:**
+- Header styling
+- Row styling
+- Cell padding
+- Borders
+- Hover states
+- Striped rows
+
+**Tooltips:**
+- Background color
+- Text color
+- Arrow styling
+- Padding
+- Border radius
+- Animation
+
+**Profile/Firm Cards (CNNCTD-specific):**
+- Firm detail cards
+- Company profile cards
+- Investor profile displays
+- Investment criteria displays
+- KPI visualization cards
+- Revenue/metrics charts
+- Stage focus indicators (Seed, A, B buttons/tags)
+
+**Swipe Interface (CNNCTD-specific):**
+- Swipe card styling
+- Match indicators
+- Pass/Connect buttons
+- Card stack effects
+- Swipe animations
+
+**Chat/Messaging Components:**
+- Message bubbles
+- Chat headers
+- Schedule meeting buttons
+- Learn more buttons
+- Timestamp styling
+
+================================================================================
+STEP 2: CREATE DESIGN TOKENS FILE
+================================================================================
+
+Create a comprehensive design tokens/variables file with:
+- All colors as CSS variables or theme object
+- All spacing values
+- All typography values
+- All shadows
+- All border radius values
+- All transition/animation values
+- All z-index layers
+
+Example structure:
+```javascript
+export const designTokens = {
+  colors: {
+    primary: {
+      50: '#...',
+      100: '#...',
+      // ... etc
+    },
+    // ... all colors
+  },
+  typography: {
+    fontFamily: {
+      primary: '...',
+      // ...
+    },
+    fontSize: {
+      // ...
+    },
+    // ...
+  },
+  spacing: {
+    // ...
+  },
+  brand: {
+    logo: {
+      // Logo specifications
+    }
+  },
+  // ... etc
+}
+```
+
+================================================================================
+STEP 3: ANALYZE APP STRUCTURE
+================================================================================
+
+Review the current app and identify:
+- All screens/pages
+- All components used
+- Current styling approach (CSS, styled-components, Tailwind, etc.)
+- File structure
+- Component hierarchy
+- Current logo implementation
+- Current brand color usage
+
+================================================================================
+STEP 4: CREATE MIGRATION PLAN
+================================================================================
+
+For each app screen/component, specify:
+1. What needs to change
+2. Exact new styles to apply
+3. Code snippets for implementation
+4. Before/after comparison
+
+================================================================================
+STEP 5: IMPLEMENT REDESIGN
+================================================================================
+
+Rewrite all styling to match the website exactly:
+
+### Global Styles
+- Reset/normalize CSS
+- Base HTML element styles
+- Body styles
+- Typography defaults
+- Link styles
+
+### Component Styles
+For EVERY component in the app, provide the complete updated code with:
+- Exact colors from website
+- Exact spacing from website
+- Exact typography from website
+- Exact borders/shadows/effects from website
+- All interactive states
+- Responsive behavior
+
+### Screen Layouts
+For EVERY screen, provide:
+- Complete layout structure
+- Exact spacing and alignment
+- Component arrangement
+- Responsive breakpoint adjustments
+
+### Brand Elements
+- Update logo implementation to match website
+- Ensure "Get CNNCTD" branding is consistent
+- Apply "STAY CONNECTED" tagline consistently
+- Implement bridge logo correctly in all contexts
+
+================================================================================
+STEP 6: ENSURE CONSISTENCY
+================================================================================
+
+Verify and document:
+- Color usage is 100% consistent
+- Typography is 100% consistent
+- Spacing follows the same scale
+- Component styling is reusable
+- Interactive states work correctly
+- Mobile responsiveness matches website
+- Accessibility is maintained
+- Performance is optimized
+- CNNCTD logo appears correctly everywhere
+- Brand colors are consistent
+- All "connection" and "bridging" metaphors are visually consistent
+
+================================================================================
+DELIVERABLES
+================================================================================
+
+Provide the following:
+
+1. **Design System Documentation**
+   - Complete list of all design tokens
+   - Usage guidelines for each token
+   - Component style specifications
+   - Brand guidelines (logo usage, colors, typography)
+
+2. **Updated Code Files**
+   - Design tokens/theme file
+   - Updated global styles
+   - All updated component files
+   - All updated screen files
+   - Logo assets and implementation
+   - Brand color constants
+
+3. **Migration Guide**
+   - Step-by-step implementation instructions
+   - File-by-file changes needed
+   - Testing checklist
+   - Brand asset replacement guide
+
+4. **Visual Comparison**
+   - List of all changes made
+   - Before/after for each component
+   - Consistency verification checklist
+
+================================================================================
+IMPORTANT REQUIREMENTS
+================================================================================
+
+- Extract styles from WEBSITE code, not from assumptions
+- Use exact same hex codes, not "close enough" colors
+- Match spacing pixel-perfect
+- Preserve all app functionality while updating appearance
+- Ensure mobile-first responsive design
+- Maintain accessibility standards
+- Use the same styling approach as the current app (if CSS, use CSS; if Tailwind, use Tailwind, etc.)
+- Create reusable, maintainable code
+- Add comments explaining design decisions
+- Ensure smooth transitions and animations
+- Test all interactive states
+- Verify cross-browser compatibility
+- Ensure CNNCTD logo is crisp and properly sized
+- Maintain brand identity throughout
+
+================================================================================
+QUALITY CHECKLIST
+================================================================================
+
+Before completing, verify:
+- [ ] All colors match website exactly
+- [ ] All fonts and typography match exactly
+- [ ] All spacing values match exactly
+- [ ] All border radius values match exactly
+- [ ] All shadows match exactly
+- [ ] All buttons look identical
+- [ ] All form elements look identical
+- [ ] All cards/containers look identical
+- [ ] Navigation looks identical
+- [ ] CNNCTD logo displays correctly on all screens
+- [ ] Logo sizing is appropriate for mobile and desktop
+- [ ] Brand colors are used consistently
+- [ ] "Get CNNCTD" and "STAY CONNECTED" branding is consistent
+- [ ] Bridge logo metaphor is clear and well-implemented
+- [ ] Mobile layouts match website mobile layouts
+- [ ] All hover states work correctly
+- [ ] All focus states work correctly
+- [ ] All active states work correctly
+- [ ] All disabled states look correct
+- [ ] Loading states are styled consistently
+- [ ] Error states are styled consistently
+- [ ] Success states are styled consistently
+- [ ] Responsive breakpoints match
+- [ ] Animations/transitions are smooth
+- [ ] No console errors
+- [ ] Code is clean and maintainable
+- [ ] Components are reusable
+- [ ] Accessibility is preserved
+
+================================================================================
+OUTPUT FORMAT
+================================================================================
+
+Structure your response as:
+
+1. **Design System Analysis**
+   - Complete design tokens extracted from website
+   - Brand guidelines and logo specifications
+   
+2. **Component-by-Component Updates**
+   - For each component: current state, required changes, updated code
+   
+3. **Screen-by-Screen Updates**
+   - For each screen: layout changes, updated code
+   
+4. **Implementation Files**
+   - All updated code files ready to use
+   - Logo asset files and implementation code
+   
+5. **Testing & Verification**
+   - Checklist of items to verify
+   - Known issues or limitations
+
+Begin by analyzing the website code in extreme detail, then systematically update every part of the app to match.
+
+================================================================================
+END OF PROMPT
+================================================================================
