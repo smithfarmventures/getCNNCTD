@@ -10,7 +10,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="text-[12px]" style={{ color: 'rgba(255,255,255,0.4)' }}>
-        © 2025 CNNCTD. Sourcing and connection only. No transactions facilitated.
+        © {new Date().getFullYear()} CNNCTD. Sourcing and connection only. No transactions facilitated.
       </div>
     </footer>
   )

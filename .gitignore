@@ -11,6 +11,12 @@ web/next-env.d.ts
 # API build
 api/dist/
 
+# TypeScript incremental build info
+**/tsconfig.tsbuildinfo
+
+# Claude/agent workspace
+.claude/
+
 # Env / secrets — NEVER commit these
 .env
 .env.local

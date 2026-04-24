@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { pool } from '../db';
+import { sendWelcomeEmail } from '../email';
 
 const router = Router();
 
@@ -31,9 +32,19 @@ router.post('/', async (req: Request, res: Response): Promise<void> => {
       [email.toLowerCase().trim(), name || null, role || null, company || null]
     );
 
+    const entry = result.rows[0];
+
+    // Fire-and-forget welcome email. Intentionally awaited-but-caught so
+    // that a Resend outage never fails a signup.
+    void sendWelcomeEmail({
+      to: entry.email,
+      name: entry.name,
+      role: entry.role,
+    }).catch((e) => console.error('[waitlist] welcome email threw:', e));
+
     res.status(201).json({
       message: 'You have been added to the waitlist!',
-      entry: result.rows[0],
+      entry,
     });
   } catch (err: unknown) {
     const pgErr = err as { code?: string };

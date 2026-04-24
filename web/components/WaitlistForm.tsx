@@ -66,7 +66,7 @@ function WaitlistFormInner() {
           You&apos;re CNNCTD!
         </h3>
         <p className="text-text-secondary text-lg max-w-md">
-          We&apos;ll be in touch soon with early access details. Stay CNNCTD with the first wave.
+          Check your inbox &mdash; a welcome note from hello@getcnnctd.com is on its way. We&apos;ll be back with early access details soon.
         </p>
       </div>
     )
