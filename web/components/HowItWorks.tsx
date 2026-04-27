@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
 
 function useReveal(threshold = 0.15) {
   const ref = useRef<HTMLElement | null>(null)
@@ -86,14 +85,12 @@ export default function HowItWorks() {
               animationDelay: '0s',
             }}
           >
-            <div className="w-9 h-9 rounded-[10px] bg-white border border-ink/10 flex items-center justify-center mb-[10px] overflow-hidden p-1">
-              <Image src="/broadlight_grey.jpeg" alt="Broadlight Capital" width={28} height={28} style={{ objectFit: 'contain', maxHeight: 28, width: 'auto' }} />
-            </div>
-            <div className="text-[13px] font-medium text-ink mb-[3px]">Broadlight Capital</div>
-            <div className="text-[11px] text-ink-mute mb-[10px]">Seed–Series A · B2B SaaS</div>
+            <div className="w-9 h-9 rounded-[10px] bg-green/[0.08] flex items-center justify-center text-[12px] font-semibold text-green mb-[10px]">NV</div>
+            <div className="text-[13px] font-medium text-ink mb-[3px]">Northbridge Ventures</div>
+            <div className="text-[11px] text-ink-mute mb-[10px]">Series A · Vertical SaaS</div>
             <div className="flex gap-2">
-              <div className="bg-cream rounded-lg px-2 py-[5px]"><div className="text-[8px] text-ink-mute uppercase tracking-[.05em]">Check</div><div className="text-[11px] font-semibold text-ink">$1–3M</div></div>
-              <div className="bg-cream rounded-lg px-2 py-[5px]"><div className="text-[8px] text-ink-mute uppercase tracking-[.05em]">Stage</div><div className="text-[11px] font-semibold text-ink">Seed–A</div></div>
+              <div className="bg-cream rounded-lg px-2 py-[5px]"><div className="text-[8px] text-ink-mute uppercase tracking-[.05em]">Check</div><div className="text-[11px] font-semibold text-ink">$3–8M</div></div>
+              <div className="bg-cream rounded-lg px-2 py-[5px]"><div className="text-[8px] text-ink-mute uppercase tracking-[.05em]">Stage</div><div className="text-[11px] font-semibold text-ink">A–B</div></div>
             </div>
           </div>
 
@@ -114,14 +111,12 @@ export default function HowItWorks() {
               <div className="w-1 h-1 bg-green rounded-full" />
               94% match
             </div>
-            <div className="w-9 h-9 rounded-[10px] bg-white border border-ink/10 flex items-center justify-center mb-[10px] overflow-hidden p-1">
-              <Image src="/sightful_grey.jpeg" alt="Sightful" width={28} height={28} style={{ objectFit: 'contain', maxHeight: 28, width: 'auto' }} />
-            </div>
-            <div className="text-[13px] font-medium text-ink mb-[3px]">Sightful</div>
-            <div className="text-[11px] text-ink-mute mb-[10px]">AR workspace · Series A</div>
+            <div className="w-9 h-9 rounded-[10px] bg-ink flex items-center justify-center text-[14px] font-semibold text-white mb-[10px]">T</div>
+            <div className="text-[13px] font-medium text-ink mb-[3px]">Tideline</div>
+            <div className="text-[11px] text-ink-mute mb-[10px]">Climate fintech · Series A</div>
             <div className="flex gap-2 mb-[10px]">
               <div className="bg-cream rounded-lg px-2 py-[5px]"><div className="text-[8px] text-ink-mute uppercase tracking-[.05em]">Stage</div><div className="text-[11px] font-semibold text-ink">Series A</div></div>
-              <div className="bg-cream rounded-lg px-2 py-[5px]"><div className="text-[8px] text-ink-mute uppercase tracking-[.05em]">Raise</div><div className="text-[11px] font-semibold text-ink">$12M</div></div>
+              <div className="bg-cream rounded-lg px-2 py-[5px]"><div className="text-[8px] text-ink-mute uppercase tracking-[.05em]">Raise</div><div className="text-[11px] font-semibold text-ink">$8M</div></div>
             </div>
             <button className="w-full h-[30px] bg-green rounded-lg text-white text-[11px] font-medium">Get CNNCTD →</button>
           </div>
@@ -140,13 +135,9 @@ export default function HowItWorks() {
           >
             <div className="text-[11px] font-semibold text-ink mb-2">You&apos;ve been CNNCTD</div>
             <div className="flex gap-2 items-center mb-[10px]">
-              <div className="w-7 h-7 rounded-full bg-white border border-ink/10 flex items-center justify-center overflow-hidden p-[3px]">
-                <Image src="/corner_grey.jpeg" alt="Corner" width={20} height={20} style={{ objectFit: 'contain', maxHeight: 20, width: 'auto' }} />
-              </div>
-              <div className="w-7 h-7 rounded-full bg-white border border-ink/10 -ml-2 flex items-center justify-center overflow-hidden p-[3px]">
-                <Image src="/sightful_grey.jpeg" alt="Sightful" width={20} height={20} style={{ objectFit: 'contain', maxHeight: 20, width: 'auto' }} />
-              </div>
-              <span className="text-[11px] text-ink-mute flex-1">Corner × Sightful</span>
+              <div className="w-7 h-7 rounded-full bg-green/[0.1] flex items-center justify-center text-[9px] font-semibold text-green">NV</div>
+              <div className="w-7 h-7 rounded-full bg-ink -ml-2 flex items-center justify-center text-[10px] font-semibold text-white">T</div>
+              <span className="text-[11px] text-ink-mute flex-1">Northbridge × Tideline</span>
             </div>
             <div className="grid grid-cols-2 gap-[6px]">
               <div className="h-[26px] rounded-lg bg-[#f0f0ee] flex items-center justify-center text-[10px] text-ink-mute font-medium">Chat</div>

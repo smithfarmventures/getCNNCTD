@@ -104,11 +104,11 @@ function PSBar() {
   return (
     <div style={{ padding: '14px 16px 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       <Image
-        src="/cnnctd_logo.png"
+        src="/getcnnctd_logo.jpeg"
         alt="CNNCTD"
-        width={56}
-        height={14}
-        style={{ objectFit: 'contain', height: 14, width: 'auto' }}
+        width={64}
+        height={36}
+        style={{ objectFit: 'contain', height: 18, width: 'auto' }}
       />
     </div>
   )
