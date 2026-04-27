@@ -44,8 +44,8 @@ export default function Problem() {
             The Problem
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight max-w-3xl mx-auto">
-            The World Has Changed&hellip;{' '}
-            <span className="text-text-secondary font-normal">
+            <span className="block">The World Has Changed&hellip;</span>
+            <span className="block text-text-secondary font-normal mt-2">
               But Venture Capital Has Not
             </span>
           </h2>

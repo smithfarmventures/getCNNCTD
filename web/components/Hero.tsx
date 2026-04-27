@@ -30,16 +30,25 @@ export default function Hero() {
 
       {/* Subheadline */}
       <p
-        className="animate-fade-up-3 font-light text-ink-soft max-w-[520px] leading-[1.65] mb-12"
+        className="animate-fade-up-3 font-light text-ink-soft max-w-[520px] leading-[1.65] mb-10"
         style={{ fontSize: 'clamp(16px, 2vw, 20px)' }}
       >
         CNNCTD is the mobile-first platform where founders meet investors the right way — through intelligent matching, not cold emails into the void.
       </p>
 
-      {/* Slogan */}
-      <p className="animate-fade-up-3 text-[13px] font-medium tracking-[0.12em] uppercase text-green mb-10 -mt-6">
-        getCNNCTD, stay CNNCTD
-      </p>
+      {/* Slogan / brand mark */}
+      <div className="animate-fade-up-3 flex items-center justify-center gap-4 mb-12">
+        <span className="h-px w-10 md:w-14 bg-green/40" />
+        <div className="flex items-baseline gap-[6px]">
+          <span className="text-[10px] md:text-[11px] font-medium tracking-[0.22em] uppercase text-ink-mute">get</span>
+          <em className="font-serif italic font-normal text-green leading-none" style={{ fontSize: 'clamp(18px, 2.2vw, 22px)' }}>CNNCTD</em>
+          <span className="text-ink-mute/40 leading-none text-[18px] mx-1">,</span>
+          <span className="text-[10px] md:text-[11px] font-medium tracking-[0.22em] uppercase text-ink-mute">stay</span>
+          <em className="font-serif italic font-normal text-green leading-none" style={{ fontSize: 'clamp(18px, 2.2vw, 22px)' }}>CNNCTD</em>
+          <span className="font-serif italic text-green leading-none" style={{ fontSize: 'clamp(18px, 2.2vw, 22px)' }}>.</span>
+        </div>
+        <span className="h-px w-10 md:w-14 bg-green/40" />
+      </div>
 
       {/* CTAs */}
       <div className="animate-fade-up-4 flex gap-3 flex-wrap justify-center">
@@ -94,7 +103,13 @@ function PhoneShell({ style, children }: { style: React.CSSProperties; children:
 function PSBar() {
   return (
     <div style={{ padding: '14px 16px 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-      <span style={{ fontSize: 13, fontWeight: 600, color: '#1a7a5e' }}>CNNCTD</span>
+      <Image
+        src="/cnnctd_logo.png"
+        alt="CNNCTD"
+        width={56}
+        height={14}
+        style={{ objectFit: 'contain', height: 14, width: 'auto' }}
+      />
     </div>
   )
 }
@@ -123,13 +138,15 @@ function PhoneLeft() {
       <div style={{ padding: '0 10px', flex: 1, display: 'flex', flexDirection: 'column' }}>
         <div style={{ background: 'white', borderRadius: 18, border: '1px solid rgba(0,0,0,0.06)', flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
           <div style={{ padding: '20px 16px 14px', borderBottom: '1px solid rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-            <div style={{ width: 52, height: 52, borderRadius: 14, background: '#f0f4f2', border: '1px solid rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 600, color: '#1a7a5e' }}>SV</div>
-            <div style={{ fontSize: 13, fontWeight: 600, color: '#0c0f0e' }}>Sequoia Capital</div>
-            <div style={{ fontSize: 9, color: '#7a8480', textAlign: 'center', lineHeight: 1.4 }}>Series A · B2B · Global</div>
-            <MatchBadge pct="96%" />
+            <div style={{ width: 52, height: 52, borderRadius: 14, background: '#fff', border: '1px solid rgba(0,0,0,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', padding: 6 }}>
+              <Image src="/broadlight_grey.jpeg" alt="Broadlight Capital" width={40} height={40} style={{ objectFit: 'contain', maxHeight: 40, width: 'auto' }} />
+            </div>
+            <div style={{ fontSize: 13, fontWeight: 600, color: '#0c0f0e' }}>Broadlight Capital</div>
+            <div style={{ fontSize: 9, color: '#7a8480', textAlign: 'center', lineHeight: 1.4 }}>Seed–Series A · B2B SaaS</div>
+            <MatchBadge pct="92%" />
           </div>
           <div style={{ padding: 12, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6 }}>
-            <StatPill label="Check" value="$5–15M" />
+            <StatPill label="Check" value="$1–3M" />
             <StatPill label="Focus" value="SaaS" />
           </div>
         </div>
@@ -146,8 +163,8 @@ function PhoneCenter() {
         <div style={{ background: 'white', borderRadius: 18, border: '1px solid rgba(0,0,0,0.06)', flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
           <div style={{ padding: '20px 16px 14px', borderBottom: '1px solid rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
             {/* Sightful logo */}
-            <div style={{ width: 52, height: 52, borderRadius: 14, background: '#000', border: '1px solid rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-              <Image src="/sightful_logo.png" alt="Sightful" width={36} height={36} style={{ objectFit: 'contain' }} />
+            <div style={{ width: 52, height: 52, borderRadius: 14, background: '#fff', border: '1px solid rgba(0,0,0,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', padding: 6 }}>
+              <Image src="/sightful_grey.jpeg" alt="Sightful" width={40} height={40} style={{ objectFit: 'contain', maxHeight: 40, width: 'auto' }} />
             </div>
             <div style={{ fontSize: 13, fontWeight: 600, color: '#0c0f0e' }}>Sightful</div>
             <div style={{ fontSize: 9, color: '#7a8480', textAlign: 'center', lineHeight: 1.4 }}>AR workspace · Spatial computing</div>
@@ -175,15 +192,17 @@ function PhoneRight() {
       <PSBar />
       <div style={{ padding: 12, flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
         <div style={{ background: 'white', borderRadius: 16, border: '1px solid rgba(0,0,0,.06)', padding: 14, display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{ width: 36, height: 36, borderRadius: '50%', background: '#1a7a5e', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 600, color: 'white', flexShrink: 0 }}>KP</div>
+          <div style={{ width: 36, height: 36, borderRadius: '50%', background: '#fff', border: '1px solid rgba(0,0,0,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', flexShrink: 0, padding: 4 }}>
+            <Image src="/baselane_grey.jpeg" alt="Baselane" width={26} height={26} style={{ objectFit: 'contain', maxHeight: 26, width: 'auto' }} />
+          </div>
           <div>
-            <div style={{ fontSize: 12, fontWeight: 600, color: '#0c0f0e' }}>KPCB × Finley</div>
+            <div style={{ fontSize: 12, fontWeight: 600, color: '#0c0f0e' }}>Corner × Baselane</div>
             <div style={{ fontSize: 10, color: '#7a8480' }}>You&apos;ve been CNNCTD</div>
           </div>
         </div>
         <div style={{ background: 'white', borderRadius: 16, border: '1px solid rgba(0,0,0,.06)', padding: 14, display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{ width: 36, height: 36, borderRadius: '50%', background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', flexShrink: 0 }}>
-            <Image src="/sightful_logo.png" alt="Sightful" width={24} height={24} style={{ objectFit: 'contain' }} />
+          <div style={{ width: 36, height: 36, borderRadius: '50%', background: '#fff', border: '1px solid rgba(0,0,0,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', flexShrink: 0, padding: 4 }}>
+            <Image src="/sightful_grey.jpeg" alt="Sightful" width={26} height={26} style={{ objectFit: 'contain', maxHeight: 26, width: 'auto' }} />
           </div>
           <div>
             <div style={{ fontSize: 12, fontWeight: 600, color: '#0c0f0e' }}>Corner × Sightful</div>

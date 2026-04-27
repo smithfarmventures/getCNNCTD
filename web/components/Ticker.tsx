@@ -1,12 +1,13 @@
 import Image from 'next/image'
 
 const logos = [
-  { src: '/sightful_logo.png',        alt: 'Sightful'            },
-  { src: '/corner_capital_logo.jpg',  alt: 'Corner Capital'      },
-  { src: '/kanso_logo.png',           alt: 'Kanso'               },
-  { src: '/third_wall_logo.png',      alt: 'Third Wall'          },
-  { src: '/baselane_logo.png',        alt: 'Baselane'            },
-  { src: '/nucleus_network_logo.png', alt: 'The Nucleus Network' },
+  { src: '/sightful_grey.jpeg',     alt: 'Sightful',            w: 130 },
+  { src: '/corner_grey.jpeg',       alt: 'Corner Capital',      w: 130 },
+  { src: '/kanso_grey.jpeg',        alt: 'Kanso',               w: 130 },
+  { src: '/third_wall_grey.jpeg',   alt: 'Third Wall',          w: 130 },
+  { src: '/baselane_grey.jpeg',     alt: 'Baselane',            w: 130 },
+  { src: '/nucleus_grey.jpeg',      alt: 'The Nucleus Network', w: 150 },
+  { src: '/broadlight_grey.jpeg',   alt: 'Broadlight Capital',  w: 150 },
 ]
 
 // Duplicate for seamless infinite loop
@@ -14,29 +15,35 @@ const all = [...logos, ...logos]
 
 export default function Ticker() {
   return (
-    <div style={{ backgroundColor: '#0c0f0e' }} className="py-[14px] overflow-hidden">
+    <div
+      style={{ backgroundColor: '#0c0f0e' }}
+      className="py-6 overflow-hidden border-y border-white/5"
+    >
+      <p className="text-center text-[10px] font-medium tracking-[0.18em] uppercase text-white/40 mb-5">
+        Trusted by founders &amp; investors
+      </p>
       <div
         className="animate-ticker"
-        style={{ display: 'inline-flex', gap: 48, alignItems: 'center', whiteSpace: 'nowrap' }}
+        style={{ display: 'inline-flex', gap: 64, alignItems: 'center', whiteSpace: 'nowrap' }}
       >
         {all.map((logo, i) => (
           <span
             key={i}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 48, flexShrink: 0 }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 64, flexShrink: 0 }}
           >
             <Image
               src={logo.src}
               alt={logo.alt}
-              width={96}
-              height={28}
+              width={logo.w}
+              height={40}
               style={{
                 objectFit: 'contain',
-                maxHeight: 28,
-                filter: 'brightness(0) invert(1)',
-                opacity: 0.7,
+                maxHeight: 40,
+                width: 'auto',
+                opacity: 0.85,
               }}
             />
-            <span style={{ color: '#1a7a5e', fontSize: 12 }}>·</span>
+            <span style={{ color: 'rgba(26,122,94,0.6)', fontSize: 10 }}>●</span>
           </span>
         ))}
       </div>

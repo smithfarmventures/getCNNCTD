@@ -86,12 +86,14 @@ export default function HowItWorks() {
               animationDelay: '0s',
             }}
           >
-            <div className="w-9 h-9 rounded-[10px] bg-green/[0.08] flex items-center justify-center text-[12px] font-semibold text-green mb-[10px]">BV</div>
-            <div className="text-[13px] font-medium text-ink mb-[3px]">Benchmark</div>
-            <div className="text-[11px] text-ink-mute mb-[10px]">Series A · Enterprise SaaS</div>
+            <div className="w-9 h-9 rounded-[10px] bg-white border border-ink/10 flex items-center justify-center mb-[10px] overflow-hidden p-1">
+              <Image src="/broadlight_grey.jpeg" alt="Broadlight Capital" width={28} height={28} style={{ objectFit: 'contain', maxHeight: 28, width: 'auto' }} />
+            </div>
+            <div className="text-[13px] font-medium text-ink mb-[3px]">Broadlight Capital</div>
+            <div className="text-[11px] text-ink-mute mb-[10px]">Seed–Series A · B2B SaaS</div>
             <div className="flex gap-2">
-              <div className="bg-cream rounded-lg px-2 py-[5px]"><div className="text-[8px] text-ink-mute uppercase tracking-[.05em]">Check</div><div className="text-[11px] font-semibold text-ink">$5M</div></div>
-              <div className="bg-cream rounded-lg px-2 py-[5px]"><div className="text-[8px] text-ink-mute uppercase tracking-[.05em]">Stage</div><div className="text-[11px] font-semibold text-ink">A–B</div></div>
+              <div className="bg-cream rounded-lg px-2 py-[5px]"><div className="text-[8px] text-ink-mute uppercase tracking-[.05em]">Check</div><div className="text-[11px] font-semibold text-ink">$1–3M</div></div>
+              <div className="bg-cream rounded-lg px-2 py-[5px]"><div className="text-[8px] text-ink-mute uppercase tracking-[.05em]">Stage</div><div className="text-[11px] font-semibold text-ink">Seed–A</div></div>
             </div>
           </div>
 
@@ -112,8 +114,8 @@ export default function HowItWorks() {
               <div className="w-1 h-1 bg-green rounded-full" />
               94% match
             </div>
-            <div className="w-9 h-9 rounded-[10px] bg-black flex items-center justify-center mb-[10px] overflow-hidden">
-              <Image src="/sightful_logo.png" alt="Sightful" width={26} height={26} style={{ objectFit: 'contain' }} />
+            <div className="w-9 h-9 rounded-[10px] bg-white border border-ink/10 flex items-center justify-center mb-[10px] overflow-hidden p-1">
+              <Image src="/sightful_grey.jpeg" alt="Sightful" width={28} height={28} style={{ objectFit: 'contain', maxHeight: 28, width: 'auto' }} />
             </div>
             <div className="text-[13px] font-medium text-ink mb-[3px]">Sightful</div>
             <div className="text-[11px] text-ink-mute mb-[10px]">AR workspace · Series A</div>
@@ -138,9 +140,11 @@ export default function HowItWorks() {
           >
             <div className="text-[11px] font-semibold text-ink mb-2">You&apos;ve been CNNCTD</div>
             <div className="flex gap-2 items-center mb-[10px]">
-              <div className="w-7 h-7 rounded-full bg-green flex items-center justify-center text-[9px] font-bold text-white">WM</div>
-              <div className="w-7 h-7 rounded-full bg-black -ml-2 flex items-center justify-center overflow-hidden">
-                <Image src="/sightful_logo.png" alt="Sightful" width={18} height={18} style={{ objectFit: 'contain' }} />
+              <div className="w-7 h-7 rounded-full bg-white border border-ink/10 flex items-center justify-center overflow-hidden p-[3px]">
+                <Image src="/corner_grey.jpeg" alt="Corner" width={20} height={20} style={{ objectFit: 'contain', maxHeight: 20, width: 'auto' }} />
+              </div>
+              <div className="w-7 h-7 rounded-full bg-white border border-ink/10 -ml-2 flex items-center justify-center overflow-hidden p-[3px]">
+                <Image src="/sightful_grey.jpeg" alt="Sightful" width={20} height={20} style={{ objectFit: 'contain', maxHeight: 20, width: 'auto' }} />
               </div>
               <span className="text-[11px] text-ink-mute flex-1">Corner × Sightful</span>
             </div>
