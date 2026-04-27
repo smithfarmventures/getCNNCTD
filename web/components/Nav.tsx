@@ -20,12 +20,12 @@ export default function Nav() {
     >
       <a href="#" className="no-underline flex items-center">
         <Image
-          src="/cnnctd_logo.png"
+          src="/getcnnctd_logo.jpeg"
           alt="CNNCTD"
-          width={80}
-          height={40}
+          width={144}
+          height={80}
           className="object-contain"
-          style={{ objectPosition: 'left center' }}
+          style={{ height: 36, width: 'auto', objectPosition: 'left center' }}
         />
       </a>
 
