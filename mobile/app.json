@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "CNNCTD",
+    "name": "getCNNCTD",
     "slug": "cnnctd",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "dark",
+    "userInterfaceStyle": "light",
     "splash": {
-      "backgroundColor": "#1C2333"
+      "backgroundColor": "#f7f5f0"
     },
     "ios": {
       "supportsTablet": false,
@@ -15,7 +15,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#1C2333"
+        "backgroundColor": "#f7f5f0"
       },
       "package": "com.cnnctd.app"
     },
