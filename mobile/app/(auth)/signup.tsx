@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { Colors } from '../../constants/colors';
+import { DS } from '../../constants/DS';
 import api from '../../lib/api';
 import { useAuthStore } from '../../store/authStore';
 import type { AuthResponse, UserRole } from '../../constants/types';
@@ -88,41 +89,25 @@ export default function SignupScreen() {
             </View>
           ) : null}
 
-          {/* Role toggle */}
+          {/* Role selector cards */}
           <View style={styles.inputGroup}>
             <Text style={styles.label}>I am a</Text>
-            <View style={styles.roleToggle}>
+            <View style={styles.roleRow}>
               <TouchableOpacity
-                style={[
-                  styles.roleOption,
-                  role === 'founder' && styles.roleOptionActive,
-                ]}
+                style={[styles.roleCard, role === 'founder' && styles.roleCardActive]}
                 onPress={() => setRole('founder')}
                 activeOpacity={0.8}
               >
-                <Text
-                  style={[
-                    styles.roleOptionText,
-                    role === 'founder' && styles.roleOptionTextActive,
-                  ]}
-                >
+                <Text style={[styles.roleCardText, role === 'founder' && styles.roleCardTextActive]}>
                   Founder
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={[
-                  styles.roleOption,
-                  role === 'investor' && styles.roleOptionActive,
-                ]}
+                style={[styles.roleCard, role === 'investor' && styles.roleCardActive]}
                 onPress={() => setRole('investor')}
                 activeOpacity={0.8}
               >
-                <Text
-                  style={[
-                    styles.roleOptionText,
-                    role === 'investor' && styles.roleOptionTextActive,
-                  ]}
-                >
+                <Text style={[styles.roleCardText, role === 'investor' && styles.roleCardTextActive]}>
                   Investor
                 </Text>
               </TouchableOpacity>
@@ -166,7 +151,7 @@ export default function SignupScreen() {
             {loading ? (
               <ActivityIndicator color="#FFFFFF" />
             ) : (
-              <Text style={styles.signupButtonText}>Create Account</Text>
+              <Text style={styles.signupButtonText}>Get CNNCTD</Text>
             )}
           </TouchableOpacity>
 
@@ -186,34 +171,25 @@ export default function SignupScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.cream,
-  },
-  flex: {
-    flex: 1,
-  },
+  container: { flex: 1, backgroundColor: Colors.cream },
+  flex: { flex: 1 },
   scroll: {
     flexGrow: 1,
     paddingHorizontal: 28,
     paddingTop: 16,
     paddingBottom: 40,
   },
-  backButton: {
-    marginBottom: 24,
-  },
-  backText: {
-    color: Colors.inkMute,
-    fontSize: 15,
-  },
+  backButton: { marginBottom: 24 },
+  backText: { fontFamily: DS.fontUI, color: Colors.inkMute, fontSize: 15 },
   heading: {
-    fontSize: 30,
-    fontWeight: '700',
+    fontFamily: DS.fontDisplayItalic,
+    fontSize: 34,
     color: Colors.ink,
     marginBottom: 8,
     letterSpacing: -0.5,
   },
   subheading: {
+    fontFamily: DS.fontUI,
     fontSize: 15,
     color: Colors.inkMute,
     marginBottom: 32,
@@ -221,55 +197,46 @@ const styles = StyleSheet.create({
   },
   errorBox: {
     backgroundColor: 'rgba(224,60,80,0.07)',
-    borderRadius: 10,
+    borderRadius: DS.radiusCard,
     padding: 14,
     marginBottom: 20,
     borderWidth: 1,
     borderColor: 'rgba(224,60,80,0.25)',
   },
-  errorText: {
-    color: Colors.danger,
-    fontSize: 14,
-  },
-  inputGroup: {
-    marginBottom: 20,
-  },
+  errorText: { fontFamily: DS.fontUI, color: Colors.danger, fontSize: 14 },
+  inputGroup: { marginBottom: 20 },
   label: {
+    fontFamily: DS.fontUISemiBold,
     fontSize: 11,
     color: Colors.inkMute,
     marginBottom: 8,
-    fontWeight: '600',
     textTransform: 'uppercase',
     letterSpacing: 0.6,
   },
-  roleToggle: {
-    flexDirection: 'row',
-    backgroundColor: Colors.creamDark,
-    borderRadius: 12,
-    padding: 4,
+  roleRow: { flexDirection: 'row', gap: 12 },
+  roleCard: {
+    flex: 1,
+    paddingVertical: 16,
+    borderRadius: DS.radiusCardLg,
+    alignItems: 'center',
+    backgroundColor: Colors.cardBg,
     borderWidth: 1,
     borderColor: Colors.cardBorder,
   },
-  roleOption: {
-    flex: 1,
-    paddingVertical: 12,
-    borderRadius: 10,
-    alignItems: 'center',
+  roleCardActive: {
+    borderColor: Colors.brand,
+    backgroundColor: Colors.brandBg,
   },
-  roleOptionActive: {
-    backgroundColor: Colors.cardBg,
-  },
-  roleOptionText: {
+  roleCardText: {
+    fontFamily: DS.fontUISemiBold,
     fontSize: 15,
     color: Colors.inkMute,
-    fontWeight: '600',
   },
-  roleOptionTextActive: {
-    color: Colors.ink,
-  },
+  roleCardTextActive: { color: Colors.brand },
   input: {
+    fontFamily: DS.fontUI,
     backgroundColor: Colors.cardBg,
-    borderRadius: 12,
+    borderRadius: DS.radiusInput,
     paddingHorizontal: 16,
     paddingVertical: 14,
     fontSize: 16,
@@ -279,27 +246,26 @@ const styles = StyleSheet.create({
   },
   signupButton: {
     backgroundColor: Colors.ink,
-    borderRadius: 50,
+    borderRadius: DS.radiusPill,
     paddingVertical: 18,
     alignItems: 'center',
     marginTop: 12,
     marginBottom: 24,
   },
-  disabledButton: {
-    opacity: 0.6,
-  },
+  disabledButton: { opacity: 0.6 },
   signupButtonText: {
+    fontFamily: DS.fontUISemiBold,
     color: '#ffffff',
     fontSize: 16,
-    fontWeight: '600',
   },
   loginLink: {
+    fontFamily: DS.fontUI,
     color: Colors.inkMute,
     fontSize: 14,
     textAlign: 'center',
   },
   loginLinkBold: {
+    fontFamily: DS.fontUISemiBold,
     color: Colors.brand,
-    fontWeight: '600',
   },
 });

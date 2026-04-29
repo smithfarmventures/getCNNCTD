@@ -124,7 +124,7 @@ export default function CardStack({ cards, onSwipe, onCardPress }: CardStackProp
     const rotate = interpolate(
       translateX.value,
       [-SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2],
-      [-15, 0, 15],
+      [-12, 0, 12],
       Extrapolation.CLAMP
     );
     return {

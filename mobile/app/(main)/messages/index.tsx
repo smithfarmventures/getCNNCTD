@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { router } from 'expo-router';
 import { Colors } from '../../../constants/colors';
+import { DS } from '../../../constants/DS';
 import api from '../../../lib/api';
 import type { Match } from '../../../constants/types';
 
@@ -93,7 +94,7 @@ export default function MessagesIndexScreen() {
           <Text style={styles.headerTitle}>Messages</Text>
         </View>
         <View style={styles.centered}>
-          <ActivityIndicator size="large" color={Colors.accentBlue} />
+          <ActivityIndicator size="large" color={Colors.brand} />
         </View>
       </SafeAreaView>
     );
@@ -145,8 +146,8 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
   },
   headerTitle: {
+    fontFamily: DS.fontDisplay,
     fontSize: 28,
-    fontWeight: '700',
     color: Colors.ink,
     letterSpacing: -0.5,
   },
@@ -189,16 +190,18 @@ const styles = StyleSheet.create({
     marginBottom: 3,
   },
   threadName: {
+    fontFamily: DS.fontUISemiBold,
     fontSize: 15,
-    fontWeight: '600',
     color: Colors.ink,
     letterSpacing: -0.2,
   },
   threadTime: {
+    fontFamily: DS.fontUI,
     fontSize: 12,
     color: Colors.inkMute,
   },
   lastMessage: {
+    fontFamily: DS.fontUI,
     fontSize: 13,
     color: Colors.inkMute,
   },

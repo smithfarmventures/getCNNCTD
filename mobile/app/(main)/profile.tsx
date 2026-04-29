@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { router } from 'expo-router';
 import { Colors } from '../../constants/colors';
+import { DS } from '../../constants/DS';
 import api from '../../lib/api';
 import { useAuthStore } from '../../store/authStore';
 import type { InvestorProfile, FounderProfile } from '../../constants/types';
@@ -256,8 +257,8 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
   profileName: {
+    fontFamily: DS.fontDisplay,
     fontSize: 22,
-    fontWeight: '700',
     color: Colors.ink,
     marginBottom: 6,
     letterSpacing: -0.3,
@@ -367,26 +368,26 @@ const styles = StyleSheet.create({
   },
   editButton: {
     backgroundColor: Colors.ink,
-    borderRadius: 14,
+    borderRadius: DS.radiusPill,
     paddingVertical: 16,
     alignItems: 'center',
   },
   editButtonText: {
+    fontFamily: DS.fontUISemiBold,
     color: '#ffffff',
     fontSize: 16,
-    fontWeight: '600',
   },
   logoutButton: {
     backgroundColor: 'rgba(224,60,80,0.07)',
-    borderRadius: 14,
+    borderRadius: DS.radiusPill,
     paddingVertical: 16,
     alignItems: 'center',
     borderWidth: 1,
     borderColor: 'rgba(224,60,80,0.2)',
   },
   logoutButtonText: {
+    fontFamily: DS.fontUISemiBold,
     color: Colors.danger,
     fontSize: 16,
-    fontWeight: '600',
   },
 });

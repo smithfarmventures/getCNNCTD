@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import Animated, { SharedValue, useAnimatedStyle } from 'react-native-reanimated';
 import { Colors } from '../constants/colors';
+import { DS } from '../constants/DS';
 import type { SwipeCard as SwipeCardType, Company } from '../constants/types';
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
@@ -34,7 +35,6 @@ function initials(name: string): string {
     .toUpperCase();
 }
 
-/** Map the API SwipeCard union → the unified Company display shape */
 export function toCompany(card: SwipeCardType): Company {
   if (card.type === 'founder') {
     const p = card.profile;
@@ -45,7 +45,7 @@ export function toCompany(card: SwipeCardType): Company {
       logo: p.logo_url ?? null,
       tagline: p.one_liner ?? '',
       stage: p.stage ?? '—',
-      matchScore: Math.floor(Math.random() * 15) + 82, // placeholder until API returns it
+      matchScore: Math.floor(Math.random() * 15) + 82,
       matchReason: 'Matches your thesis and stage focus',
       tags: [p.industry ?? 'Tech', p.hq_location ?? ''].filter(Boolean),
       arr: p.revenue_ltm != null ? fmtMoney(p.revenue_ltm) : 'N/A',
@@ -66,7 +66,6 @@ export function toCompany(card: SwipeCardType): Company {
     };
   }
 
-  // investor
   const p = card.profile;
   return {
     user_id: card.user_id,
@@ -114,7 +113,6 @@ export default function SwipeCard({ card, style, likeOpacity, passOpacity, onPre
   const likeStyle = useAnimatedStyle(() => ({ opacity: likeOpacity ? likeOpacity.value : 0 }));
   const passStyle = useAnimatedStyle(() => ({ opacity: passOpacity ? passOpacity.value : 0 }));
 
-  // Determine stage chips — show Seed / Series A / Series B with active state
   const stageLabels = ['Seed', 'Series A', 'Series B'];
   const activeStage = stageLabels.find(
     (s) => company.stage.toLowerCase().includes(s.toLowerCase())
@@ -162,7 +160,7 @@ export default function SwipeCard({ card, style, likeOpacity, passOpacity, onPre
         </View>
       </View>
 
-      {/* Stats Grid — 4 uniform pills */}
+      {/* Stats Grid — 4 uniform pills with JetBrains Mono values */}
       <View style={styles.statsZone}>
         <View style={styles.statsGrid}>
           <StatPill label="ARR" value={company.arr} />
@@ -181,7 +179,6 @@ export default function SwipeCard({ card, style, likeOpacity, passOpacity, onPre
         )}
       </View>
 
-      {/* Tap hint */}
       <View style={styles.tapHint}>
         <Text style={styles.tapHintText}>Tap to view full profile</Text>
       </View>
@@ -205,43 +202,47 @@ function StatPill({ label, value }: { label: string; value: string }) {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: Colors.cardBg,
-    borderRadius: 24,
+    borderRadius: DS.radiusSwipe,
     borderWidth: 1,
     borderColor: Colors.cardBorder,
     overflow: 'hidden',
     flex: 1,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.1,
-    shadowRadius: 16,
-    elevation: 8,
+    ...DS.shadowSwipe,
   },
-  // Swipe overlays
   likeOverlay: {
     position: 'absolute',
     top: 24,
     left: 24,
     borderWidth: 3,
     borderColor: Colors.brand,
-    borderRadius: 8,
+    borderRadius: DS.radiusTag,
     paddingHorizontal: 10,
     paddingVertical: 4,
     zIndex: 10,
   },
-  likeText: { color: Colors.brand, fontSize: 20, fontWeight: '800', letterSpacing: 2 },
+  likeText: {
+    fontFamily: DS.fontUISemiBold,
+    color: Colors.brand,
+    fontSize: 20,
+    letterSpacing: 2,
+  },
   passOverlay: {
     position: 'absolute',
     top: 24,
     right: 24,
     borderWidth: 3,
     borderColor: Colors.danger,
-    borderRadius: 8,
+    borderRadius: DS.radiusTag,
     paddingHorizontal: 10,
     paddingVertical: 4,
     zIndex: 10,
   },
-  passText: { color: Colors.danger, fontSize: 20, fontWeight: '800', letterSpacing: 2 },
-  // Logo zone
+  passText: {
+    fontFamily: DS.fontUISemiBold,
+    color: Colors.danger,
+    fontSize: 20,
+    letterSpacing: 2,
+  },
   logoZone: {
     paddingTop: 30,
     paddingBottom: 22,
@@ -261,14 +262,14 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.brandBg,
     paddingHorizontal: 10,
     paddingVertical: 4,
-    borderRadius: 20,
+    borderRadius: DS.radiusPill,
   },
-  matchPip: { width: 5, height: 5, borderRadius: 3, backgroundColor: Colors.brand },
-  matchText: { fontSize: 11, fontWeight: '600', color: Colors.brand },
+  matchPip: { width: 5, height: 5, borderRadius: DS.radiusPill, backgroundColor: Colors.brand },
+  matchText: { fontFamily: DS.fontUISemiBold, fontSize: 11, color: Colors.brand },
   logoBox: {
-    width: 84,
-    height: 84,
-    borderRadius: 22,
+    width: 72,
+    height: 72,
+    borderRadius: DS.radiusPill,
     backgroundColor: Colors.pill,
     borderWidth: 1,
     borderColor: Colors.cardBorder,
@@ -276,41 +277,71 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 14,
   },
-  logoInitials: { fontSize: 28, fontWeight: '600', color: Colors.brand },
-  companyName: { fontSize: 19, fontWeight: '600', color: Colors.ink, marginBottom: 5, letterSpacing: -0.4 },
-  companyTagline: { fontSize: 12, color: Colors.inkMute, textAlign: 'center', lineHeight: 18, maxWidth: 210 },
+  logoInitials: {
+    fontFamily: DS.fontUISemiBold,
+    fontSize: 24,
+    color: Colors.brand,
+  },
+  companyName: {
+    fontFamily: DS.fontDisplay,
+    fontSize: 19,
+    color: Colors.ink,
+    marginBottom: 5,
+    letterSpacing: -0.4,
+  },
+  companyTagline: {
+    fontFamily: DS.fontUILight,
+    fontSize: 12,
+    color: Colors.inkMute,
+    textAlign: 'center',
+    lineHeight: 18,
+    maxWidth: 210,
+  },
   stageRow: { flexDirection: 'row', gap: 6, marginTop: 12 },
-  stageChip: { paddingHorizontal: 10, paddingVertical: 3, borderRadius: 20, backgroundColor: Colors.pill },
+  stageChip: {
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+    borderRadius: DS.radiusPill,
+    backgroundColor: Colors.pill,
+  },
   stageChipActive: { backgroundColor: Colors.brandMid },
-  stageText: { fontSize: 10, fontWeight: '500', color: Colors.inkMute },
+  stageText: { fontFamily: DS.fontUIMedium, fontSize: 10, color: Colors.inkMute },
   stageTextActive: { color: Colors.brand },
-  // Stats zone — 4 uniform pills
   statsZone: { padding: 18 },
   statsGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10 },
   statPill: {
     width: '47%',
     backgroundColor: Colors.pill,
-    borderRadius: 16,
+    borderRadius: DS.radiusCard,
     padding: 12,
   },
   statLabel: {
+    fontFamily: DS.fontUIMedium,
     fontSize: 10,
     color: Colors.inkMute,
-    fontWeight: '500',
     textTransform: 'uppercase',
     letterSpacing: 0.7,
     marginBottom: 3,
   },
-  statValue: { fontSize: 15, fontWeight: '600', color: Colors.ink, letterSpacing: -0.3 },
+  statValue: {
+    fontFamily: DS.fontMonoBold,
+    fontSize: 15,
+    color: Colors.ink,
+    letterSpacing: -0.3,
+  },
   industryRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 12 },
-  indTag: { backgroundColor: Colors.pill, paddingHorizontal: 10, paddingVertical: 4, borderRadius: 20 },
-  indTagText: { fontSize: 11, color: Colors.inkSoft },
-  // Tap hint
+  indTag: {
+    backgroundColor: Colors.pill,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: DS.radiusPill,
+  },
+  indTagText: { fontFamily: DS.fontUI, fontSize: 11, color: Colors.inkSoft },
   tapHint: {
     padding: 12,
     borderTopWidth: 1,
     borderTopColor: Colors.cardBorder,
     alignItems: 'center',
   },
-  tapHintText: { fontSize: 11, color: Colors.inkMute },
+  tapHintText: { fontFamily: DS.fontUI, fontSize: 11, color: Colors.inkMute },
 });

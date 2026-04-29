@@ -2,6 +2,7 @@ import React from 'react';
 import { Tabs } from 'expo-router';
 import { View, StyleSheet } from 'react-native';
 import { Colors } from '../../constants/colors';
+import { DS } from '../../constants/DS';
 
 function CompassIcon({ color }: { color: string }) {
   return (
@@ -121,7 +122,7 @@ export default function MainLayout() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: Colors.surface,
+          backgroundColor: Colors.cardBg,
           borderTopColor: 'rgba(0,0,0,0.06)',
           borderTopWidth: 1,
           height: 72,
@@ -131,8 +132,8 @@ export default function MainLayout() {
         tabBarActiveTintColor: Colors.brand,
         tabBarInactiveTintColor: Colors.inkMute,
         tabBarLabelStyle: {
+          fontFamily: DS.fontUIMedium,
           fontSize: 11,
-          fontWeight: '600',
         },
       }}
     >

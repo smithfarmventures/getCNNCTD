@@ -10,6 +10,7 @@ import {
 import { useRouter } from 'expo-router';
 import { Colors } from '../../../constants/colors';
 import { useDiscoverStore } from '../../../store/discoverStore';
+import { DS } from '../../../constants/DS';
 import type { AnnualRevenuePoint } from '../../../constants/types';
 
 export default function CompanyDetailScreen() {
@@ -182,7 +183,7 @@ function ChevronLeft() {
 // ─── Styles ──────────────────────────────────────────────────────────────────
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: Colors.cardBg },
+  screen: { flex: 1, backgroundColor: Colors.cream },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   emptyText: { fontSize: 16, color: Colors.inkMute },
   header: {
@@ -284,7 +285,7 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
   },
-  metricVal: { fontSize: 14, fontWeight: '600', color: Colors.ink, letterSpacing: -0.3 },
+  metricVal: { fontFamily: DS.fontMonoBold, fontSize: 14, color: Colors.ink, letterSpacing: -0.3 },
   metricLbl: {
     fontSize: 9,
     color: Colors.inkMute,
@@ -328,9 +329,9 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: Colors.cardBorder,
   },
-  btn: { height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 6 },
+  btn: { height: 52, borderRadius: DS.radiusPill, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 6 },
   btnPass: { flex: 1, backgroundColor: Colors.pill },
-  btnPassText: { fontSize: 13, fontWeight: '500', color: Colors.inkSoft },
+  btnPassText: { fontFamily: DS.fontUIMedium, fontSize: 14, color: Colors.inkSoft },
   btnConnect: { flex: 2, backgroundColor: Colors.brand },
-  btnConnectText: { fontSize: 13, fontWeight: '500', color: '#fff' },
+  btnConnectText: { fontFamily: DS.fontUISemiBold, fontSize: 14, color: '#fff' },
 });

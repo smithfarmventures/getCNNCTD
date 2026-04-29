@@ -11,14 +11,15 @@ import {
 } from 'react-native';
 import { router } from 'expo-router';
 import { Colors } from '../../constants/colors';
+import { DS } from '../../constants/DS';
 import api from '../../lib/api';
 import type { Match, MatchStatus } from '../../constants/types';
 
 const STATUS_COLORS: Record<MatchStatus, string> = {
-  new: Colors.accentBlue,
-  in_conversation: Colors.success,
-  meeting_scheduled: Colors.primaryLight,
-  passed: Colors.textSecondary,
+  new: Colors.brand,
+  in_conversation: Colors.brandLight,
+  meeting_scheduled: Colors.brand,
+  passed: Colors.inkMute,
 };
 
 const STATUS_LABELS: Record<MatchStatus, string> = {
@@ -45,7 +46,7 @@ interface MatchCardProps {
 }
 
 function MatchCard({ match, onPress }: MatchCardProps) {
-  const statusColor = STATUS_COLORS[match.status] ?? Colors.textSecondary;
+  const statusColor = STATUS_COLORS[match.status] ?? Colors.inkMute;
   const statusLabel = STATUS_LABELS[match.status] ?? match.status;
   const initial = match.counterparty_name?.[0]?.toUpperCase() ?? '?';
 
@@ -105,7 +106,7 @@ export default function PipelineScreen() {
           <Text style={styles.headerTitle}>Pipeline</Text>
         </View>
         <View style={styles.centered}>
-          <ActivityIndicator size="large" color={Colors.accentBlue} />
+          <ActivityIndicator size="large" color={Colors.brand} />
         </View>
       </SafeAreaView>
     );
@@ -162,8 +163,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   headerTitle: {
+    fontFamily: DS.fontDisplay,
     fontSize: 28,
-    fontWeight: '700',
     color: Colors.ink,
     letterSpacing: -0.5,
   },
@@ -189,8 +190,8 @@ const styles = StyleSheet.create({
   matchAvatar: {
     width: 48,
     height: 48,
-    borderRadius: 24,
-    backgroundColor: Colors.primaryMid,
+    borderRadius: DS.radiusPill,
+    backgroundColor: Colors.brand,
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { useLocalSearchParams, router, useFocusEffect } from 'expo-router';
 import { Colors } from '../../../constants/colors';
+import { DS } from '../../../constants/DS';
 import api from '../../../lib/api';
 import { useAuthStore } from '../../../store/authStore';
 import type { Message } from '../../../constants/types';
@@ -140,7 +141,7 @@ export default function ChatScreen() {
           </TouchableOpacity>
         </View>
         <View style={styles.centered}>
-          <ActivityIndicator size="large" color={Colors.accentBlue} />
+          <ActivityIndicator size="large" color={Colors.brand} />
         </View>
       </SafeAreaView>
     );
@@ -308,6 +309,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.cardBorder,
   },
   bubbleText: {
+    fontFamily: DS.fontUI,
     fontSize: 15,
     color: Colors.ink,
     lineHeight: 21,
@@ -338,9 +340,10 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.cardBg,
   },
   messageInput: {
+    fontFamily: DS.fontUI,
     flex: 1,
-    backgroundColor: Colors.pill,
-    borderRadius: 22,
+    backgroundColor: Colors.cardBg,
+    borderRadius: DS.radiusPill,
     paddingHorizontal: 16,
     paddingVertical: 10,
     fontSize: 15,

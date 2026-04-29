@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { router } from 'expo-router';
 import { Colors } from '../constants/colors';
+import { DS } from '../constants/DS';
 
 interface MatchBannerProps {
   visible: boolean;
@@ -37,8 +38,10 @@ export default function MatchBanner({ visible, onClose, matchName, matchId }: Ma
       <View style={styles.overlay}>
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.container}>
-            <Text style={styles.emoji}>🎉</Text>
-            <Text style={styles.title}>You've Been CNNCTD!</Text>
+            <View style={styles.accentLine} />
+            <Text style={styles.title}>
+              You've Been <Text style={styles.titleAccent}>CNNCTD!</Text>
+            </Text>
             <Text style={styles.subtitle}>
               You and {matchName} are now connected
             </Text>
@@ -49,7 +52,7 @@ export default function MatchBanner({ visible, onClose, matchName, matchId }: Ma
               onPress={handleStartChatting}
               activeOpacity={0.8}
             >
-              <Text style={styles.primaryButtonText}>Start Chatting</Text>
+              <Text style={styles.primaryButtonText}>CHAT</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -83,23 +86,32 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 28,
     paddingVertical: 40,
-    backgroundColor: Colors.cardBg,
-    borderRadius: 28,
+    backgroundColor: Colors.cream,
+    borderRadius: DS.radiusSheet,
     width: '100%',
+    ...DS.shadowModal,
   },
-  emoji: {
-    fontSize: 52,
-    marginBottom: 16,
+  accentLine: {
+    width: 40,
+    height: 3,
+    backgroundColor: Colors.brand,
+    borderRadius: DS.radiusPill,
+    marginBottom: 24,
   },
   title: {
-    fontSize: 26,
-    fontWeight: '700',
+    fontFamily: DS.fontDisplay,
+    fontSize: 28,
     color: Colors.ink,
     textAlign: 'center',
     marginBottom: 10,
     letterSpacing: -0.4,
   },
+  titleAccent: {
+    fontFamily: DS.fontDisplayItalic,
+    color: Colors.brand,
+  },
   subtitle: {
+    fontFamily: DS.fontUI,
     fontSize: 15,
     color: Colors.inkMute,
     textAlign: 'center',
@@ -107,8 +119,8 @@ const styles = StyleSheet.create({
     lineHeight: 22,
   },
   slogan: {
+    fontFamily: DS.fontUISemiBold,
     fontSize: 11,
-    fontWeight: '600',
     color: Colors.brand,
     textTransform: 'uppercase',
     letterSpacing: 1.2,
@@ -116,30 +128,32 @@ const styles = StyleSheet.create({
   },
   primaryButton: {
     backgroundColor: Colors.brand,
-    borderRadius: 50,
+    borderRadius: DS.radiusPill,
     paddingVertical: 16,
     paddingHorizontal: 40,
     width: '100%',
     alignItems: 'center',
     marginBottom: 10,
+    ...DS.shadowBrand,
   },
   primaryButtonText: {
+    fontFamily: DS.fontUISemiBold,
     color: '#ffffff',
     fontSize: 16,
-    fontWeight: '600',
+    letterSpacing: 1,
   },
   secondaryButton: {
     borderWidth: 1,
     borderColor: Colors.cardBorder,
-    borderRadius: 50,
+    borderRadius: DS.radiusPill,
     paddingVertical: 14,
     paddingHorizontal: 40,
     width: '100%',
     alignItems: 'center',
   },
   secondaryButtonText: {
+    fontFamily: DS.fontUIMedium,
     color: Colors.inkSoft,
     fontSize: 16,
-    fontWeight: '600',
   },
 });

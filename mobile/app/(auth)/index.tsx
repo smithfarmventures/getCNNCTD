@@ -1,30 +1,15 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  SafeAreaView,
-  Dimensions,
-} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import { router } from 'expo-router';
 import { Colors } from '../../constants/colors';
-
-const { height } = Dimensions.get('window');
+import { DS } from '../../constants/DS';
 
 export default function SplashScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.logoSection}>
-        <View style={styles.logoRow}>
-          <Text style={styles.logoCNN}>CNN</Text>
-          <View style={styles.logoBridge}>
-            <View style={styles.bridgeLine} />
-            <View style={styles.bridgePillar} />
-            <View style={styles.bridgeLine} />
-          </View>
-          <Text style={styles.logoCTD}>CTD</Text>
-        </View>
+        <Text style={styles.logoGet}>get</Text>
+        <Text style={styles.logoCNNCTD}>CNNCTD</Text>
         <Text style={styles.tagline}>getCNNCTD, stay CNNCTD</Text>
       </View>
 
@@ -68,47 +53,28 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  logoRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 16,
+  logoGet: {
+    fontFamily: DS.fontUI,
+    fontSize: 18,
+    color: Colors.inkMute,
+    letterSpacing: 2,
+    textTransform: 'uppercase',
+    marginBottom: -4,
   },
-  logoCNN: {
-    fontSize: 48,
-    fontWeight: '800',
-    color: Colors.ink,
+  logoCNNCTD: {
+    fontFamily: DS.fontDisplayItalic,
+    fontSize: 64,
+    color: Colors.brand,
     letterSpacing: -2,
-  },
-  logoCTD: {
-    fontSize: 48,
-    fontWeight: '800',
-    color: Colors.ink,
-    letterSpacing: -2,
-  },
-  logoBridge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginHorizontal: 6,
-    marginTop: 4,
-  },
-  bridgeLine: {
-    width: 10,
-    height: 2,
-    backgroundColor: Colors.brand,
-  },
-  bridgePillar: {
-    width: 4,
-    height: 12,
-    backgroundColor: Colors.brand,
-    borderRadius: 2,
-    marginHorizontal: 2,
+    lineHeight: 68,
+    marginBottom: 20,
   },
   tagline: {
-    fontSize: 13,
+    fontFamily: DS.fontUIMedium,
+    fontSize: 12,
     color: Colors.inkMute,
-    letterSpacing: 0.8,
+    letterSpacing: 1.2,
     textTransform: 'uppercase',
-    fontWeight: '500',
   },
   buttonSection: {
     paddingHorizontal: 28,
@@ -116,31 +82,32 @@ const styles = StyleSheet.create({
   },
   founderButton: {
     backgroundColor: Colors.ink,
-    borderRadius: 50,
+    borderRadius: DS.radiusPill,
     paddingVertical: 18,
     alignItems: 'center',
   },
   founderButtonText: {
+    fontFamily: DS.fontUISemiBold,
     color: '#ffffff',
     fontSize: 16,
-    fontWeight: '600',
     letterSpacing: 0.1,
   },
   investorButton: {
     backgroundColor: Colors.cream,
-    borderRadius: 50,
+    borderRadius: DS.radiusPill,
     paddingVertical: 18,
     alignItems: 'center',
     borderWidth: 1,
     borderColor: 'rgba(0,0,0,0.12)',
   },
   investorButtonText: {
+    fontFamily: DS.fontUISemiBold,
     color: Colors.ink,
     fontSize: 16,
-    fontWeight: '600',
     letterSpacing: 0.1,
   },
   signInLink: {
+    fontFamily: DS.fontUI,
     color: Colors.inkMute,
     fontSize: 14,
     textAlign: 'center',

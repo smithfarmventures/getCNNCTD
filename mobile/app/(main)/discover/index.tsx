@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Colors } from '../../../constants/colors';
+import { DS } from '../../../constants/DS';
 import { useDiscoverStore } from '../../../store/discoverStore';
 import CardStack from '../../../components/CardStack';
 import MatchBanner from '../../../components/MatchBanner';
@@ -59,13 +60,14 @@ export default function DiscoverFeedScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>
-          <Text style={styles.headerBold}>CNN</Text>
-          <Text style={styles.headerAccent}>⬡</Text>
-          <Text style={styles.headerBold}>CTD</Text>
-        </Text>
+        <View>
+          <Text style={styles.overline}>Discover</Text>
+          <Text style={styles.headline}>
+            Get <Text style={styles.headlineAccent}>CNNCTD</Text>
+          </Text>
+        </View>
         <Text style={styles.swipeCount}>
-          {DAILY_SWIPE_LIMIT - dailySwipesUsed} swipes left today
+          {DAILY_SWIPE_LIMIT - dailySwipesUsed} left today
         </Text>
       </View>
 
@@ -76,9 +78,9 @@ export default function DiscoverFeedScreen() {
         </View>
       ) : atDailyLimit ? (
         <View style={styles.limitContainer}>
-          <Text style={styles.limitTitle}>Daily limit reached</Text>
+          <Text style={styles.limitTitle}>You're all caught up</Text>
           <Text style={styles.limitSubtitle}>
-            You&apos;ve used all 20 swipes for today. Come back tomorrow to stay CNNCTD!
+            Come back tomorrow to stay CNNCTD!
           </Text>
         </View>
       ) : (
@@ -100,34 +102,40 @@ export default function DiscoverFeedScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.cream,
-  },
+  container: { flex: 1, backgroundColor: Colors.cream },
   header: {
     paddingHorizontal: 24,
-    paddingTop: 12,
-    paddingBottom: 16,
+    paddingTop: 8,
+    paddingBottom: 12,
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-end',
     justifyContent: 'space-between',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(0,0,0,0.06)',
   },
-  headerTitle: {
-    fontSize: 22,
-    fontWeight: '800',
-    color: Colors.ink,
-  },
-  headerBold: {
-    color: Colors.ink,
-    fontWeight: '800',
-  },
-  headerAccent: {
+  overline: {
+    fontFamily: DS.fontUISemiBold,
+    fontSize: 11,
     color: Colors.brand,
-    fontSize: 18,
+    textTransform: 'uppercase',
+    letterSpacing: 1.2,
+    marginBottom: 2,
+  },
+  headline: {
+    fontFamily: DS.fontDisplay,
+    fontSize: 26,
+    color: Colors.ink,
+    letterSpacing: -0.5,
+  },
+  headlineAccent: {
+    fontFamily: DS.fontDisplayItalic,
+    color: Colors.brand,
   },
   swipeCount: {
-    fontSize: 13,
+    fontFamily: DS.fontUI,
+    fontSize: 12,
     color: Colors.inkMute,
+    paddingBottom: 4,
   },
   loadingContainer: {
     flex: 1,
@@ -136,6 +144,7 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   loadingText: {
+    fontFamily: DS.fontUI,
     color: Colors.inkMute,
     fontSize: 15,
   },
@@ -146,13 +155,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
   },
   limitTitle: {
-    fontSize: 22,
-    fontWeight: '700',
+    fontFamily: DS.fontDisplay,
+    fontSize: 24,
     color: Colors.ink,
     marginBottom: 12,
     textAlign: 'center',
   },
   limitSubtitle: {
+    fontFamily: DS.fontUI,
     fontSize: 15,
     color: Colors.inkMute,
     textAlign: 'center',

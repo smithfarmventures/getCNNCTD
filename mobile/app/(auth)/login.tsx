@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { Colors } from '../../constants/colors';
+import { DS } from '../../constants/DS';
 import api from '../../lib/api';
 import { useAuthStore } from '../../store/authStore';
 import type { AuthResponse } from '../../constants/types';
@@ -146,34 +147,25 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.cream,
-  },
-  flex: {
-    flex: 1,
-  },
+  container: { flex: 1, backgroundColor: Colors.cream },
+  flex: { flex: 1 },
   scroll: {
     flexGrow: 1,
     paddingHorizontal: 28,
     paddingTop: 16,
     paddingBottom: 40,
   },
-  backButton: {
-    marginBottom: 24,
-  },
-  backText: {
-    color: Colors.inkMute,
-    fontSize: 15,
-  },
+  backButton: { marginBottom: 24 },
+  backText: { fontFamily: DS.fontUI, color: Colors.inkMute, fontSize: 15 },
   heading: {
-    fontSize: 30,
-    fontWeight: '700',
+    fontFamily: DS.fontDisplayItalic,
+    fontSize: 34,
     color: Colors.ink,
     marginBottom: 8,
     letterSpacing: -0.5,
   },
   subheading: {
+    fontFamily: DS.fontUI,
     fontSize: 15,
     color: Colors.inkMute,
     marginBottom: 32,
@@ -181,30 +173,26 @@ const styles = StyleSheet.create({
   },
   errorBox: {
     backgroundColor: 'rgba(224,60,80,0.07)',
-    borderRadius: 10,
+    borderRadius: DS.radiusCard,
     padding: 14,
     marginBottom: 20,
     borderWidth: 1,
     borderColor: 'rgba(224,60,80,0.25)',
   },
-  errorText: {
-    color: Colors.danger,
-    fontSize: 14,
-  },
-  inputGroup: {
-    marginBottom: 20,
-  },
+  errorText: { fontFamily: DS.fontUI, color: Colors.danger, fontSize: 14 },
+  inputGroup: { marginBottom: 20 },
   label: {
+    fontFamily: DS.fontUISemiBold,
     fontSize: 11,
     color: Colors.inkMute,
     marginBottom: 8,
-    fontWeight: '600',
     textTransform: 'uppercase',
     letterSpacing: 0.6,
   },
   input: {
+    fontFamily: DS.fontUI,
     backgroundColor: Colors.cardBg,
-    borderRadius: 12,
+    borderRadius: DS.radiusInput,
     paddingHorizontal: 16,
     paddingVertical: 14,
     fontSize: 16,
@@ -214,27 +202,26 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     backgroundColor: Colors.ink,
-    borderRadius: 50,
+    borderRadius: DS.radiusPill,
     paddingVertical: 18,
     alignItems: 'center',
     marginTop: 12,
     marginBottom: 24,
   },
-  disabledButton: {
-    opacity: 0.6,
-  },
+  disabledButton: { opacity: 0.6 },
   loginButtonText: {
+    fontFamily: DS.fontUISemiBold,
     color: '#ffffff',
     fontSize: 16,
-    fontWeight: '600',
   },
   signupLink: {
+    fontFamily: DS.fontUI,
     color: Colors.inkMute,
     fontSize: 14,
     textAlign: 'center',
   },
   signupLinkBold: {
+    fontFamily: DS.fontUISemiBold,
     color: Colors.brand,
-    fontWeight: '600',
   },
 });

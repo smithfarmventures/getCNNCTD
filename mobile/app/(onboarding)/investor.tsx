@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { router } from 'expo-router';
 import { Colors } from '../../constants/colors';
+import { DS } from '../../constants/DS';
 import api from '../../lib/api';
 import type { FundingStage, Industry } from '../../constants/types';
 
@@ -52,14 +53,15 @@ const initialForm: FormData = {
 function ProgressBar({ step, total }: { step: number; total: number }) {
   return (
     <View style={styles.progressContainer}>
-      <View style={styles.progressTrack}>
-        <View
-          style={[styles.progressFill, { width: `${((step) / total) * 100}%` }]}
-        />
+      <View style={styles.progressDots}>
+        {Array.from({ length: total }).map((_, i) => (
+          <View
+            key={i}
+            style={[styles.progressDot, i < step && styles.progressDotFilled]}
+          />
+        ))}
       </View>
-      <Text style={styles.progressLabel}>
-        Step {step} of {total}
-      </Text>
+      <Text style={styles.progressLabel}>{step} of {total}</Text>
     </View>
   );
 }
@@ -404,30 +406,37 @@ const styles = StyleSheet.create({
   },
   progressContainer: {
     marginBottom: 32,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
-  progressTrack: {
-    height: 3,
+  progressDots: {
+    flexDirection: 'row',
+    gap: 5,
+  },
+  progressDot: {
+    width: 6,
+    height: 6,
+    borderRadius: DS.radiusPill,
     backgroundColor: Colors.creamDark,
-    borderRadius: 2,
-    overflow: 'hidden',
-    marginBottom: 8,
+    borderWidth: 1,
+    borderColor: Colors.cardBorder,
   },
-  progressFill: {
-    height: '100%',
+  progressDotFilled: {
     backgroundColor: Colors.brand,
-    borderRadius: 2,
+    borderColor: Colors.brand,
   },
   progressLabel: {
+    fontFamily: DS.fontUI,
     fontSize: 12,
     color: Colors.inkMute,
-    textAlign: 'right',
   },
   stepContent: {
     flex: 1,
   },
   stepTitle: {
-    fontSize: 26,
-    fontWeight: '700',
+    fontFamily: DS.fontDisplayItalic,
+    fontSize: 30,
     color: Colors.ink,
     marginBottom: 8,
     letterSpacing: -0.3,
@@ -547,7 +556,7 @@ const styles = StyleSheet.create({
   nextButton: {
     flex: 1,
     backgroundColor: Colors.ink,
-    borderRadius: 14,
+    borderRadius: DS.radiusPill,
     paddingVertical: 16,
     alignItems: 'center',
     justifyContent: 'center',
@@ -556,8 +565,8 @@ const styles = StyleSheet.create({
     opacity: 0.6,
   },
   nextButtonText: {
+    fontFamily: DS.fontUISemiBold,
     color: '#ffffff',
     fontSize: 16,
-    fontWeight: '600',
   },
 });
